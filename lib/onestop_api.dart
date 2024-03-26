@@ -6,15 +6,17 @@ import 'package:onestop_kit/endpoints.dart';
 
 class OneStopApi{
   @protected
-  final dio = Dio(BaseOptions(
+  final _dio = Dio(BaseOptions(
       baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 15),
       headers: Endpoints.getHeader()
   ));
 
+  Dio get dio => _dio;
+
   OneStopApi(){
-    dio.interceptors
+    _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
       options.headers["Authorization"] =
       "Bearer ${await AuthUserHelpers.getAccessToken()}";
