@@ -5,7 +5,6 @@ import 'package:onestop_kit/backend_helper.dart';
 import 'package:onestop_kit/endpoints.dart';
 
 class OneStopApi{
-  @protected
   final _dio = Dio(BaseOptions(
       baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
