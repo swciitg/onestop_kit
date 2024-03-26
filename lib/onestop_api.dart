@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:onestop_kit/auth_user_helpers.dart';
 import 'package:onestop_kit/backend_helper.dart';
 import 'package:onestop_kit/endpoints.dart';
 
 class OneStopApi{
-  final _dio = Dio(BaseOptions(
+  @protected
+  final dio = Dio(BaseOptions(
       baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 15),
@@ -12,7 +14,7 @@ class OneStopApi{
   ));
 
   OneStopApi(){
-    _dio.interceptors
+    dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
       options.headers["Authorization"] =
       "Bearer ${await AuthUserHelpers.getAccessToken()}";
