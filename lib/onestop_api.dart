@@ -12,7 +12,7 @@ class OneStopApi{
       headers: Endpoints.getHeader()
   ));
 
-  Dio get dio => _dio;
+  Dio get onestopDio => _dio;
 
   OneStopApi(){
     _dio.interceptors
