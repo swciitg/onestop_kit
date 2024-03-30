@@ -1,24 +1,22 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:onestop_kit/auth_user_helpers.dart';
-import 'package:onestop_kit/backend_helper.dart';
-import 'package:onestop_kit/endpoints.dart';
+import 'package:onestop_kit/src/api/auth_user_helpers.dart';
+import 'package:onestop_kit/src/api/backend_helper.dart';
+import 'package:onestop_kit/src/api/endpoints.dart';
 
-class OneStopApi{
+class OneStopApi {
   final _dio = Dio(BaseOptions(
       baseUrl: Endpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 15),
-      headers: Endpoints.getHeader()
-  ));
+      headers: Endpoints.getHeader()));
 
   Dio get onestopDio => _dio;
 
-  OneStopApi(){
+  OneStopApi() {
     _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
       options.headers["Authorization"] =
-      "Bearer ${await AuthUserHelpers.getAccessToken()}";
+          "Bearer ${await AuthUserHelpers.getAccessToken()}";
       handler.next(options);
     }, onError: (error, handler) async {
       var response = error.response;
@@ -43,12 +41,13 @@ class OneStopApi{
       return handler.next(error);
     }));
   }
+
   Future<Response<dynamic>> retryRequest(Response response) async {
     RequestOptions requestOptions = response.requestOptions;
     response.requestOptions.headers[BackendHelper.authorization] =
-    "Bearer ${await AuthUserHelpers.getAccessToken()}";
+        "Bearer ${await AuthUserHelpers.getAccessToken()}";
     final options =
-    Options(method: requestOptions.method, headers: requestOptions.headers);
+        Options(method: requestOptions.method, headers: requestOptions.headers);
     Dio retryDio = Dio(BaseOptions(
         baseUrl: Endpoints.baseUrl,
         connectTimeout: const Duration(seconds: 5),
@@ -73,11 +72,11 @@ class OneStopApi{
           connectTimeout: const Duration(seconds: 5),
           receiveTimeout: const Duration(seconds: 5)));
       Response<Map<String, dynamic>> resp =
-      await regenDio.post("/user/accesstoken",
-          options: Options(headers: {
-            'Security-Key': Endpoints.apiSecurityKey,
-            "authorization": "Bearer $refreshToken"
-          }));
+          await regenDio.post("/user/accesstoken",
+              options: Options(headers: {
+                'Security-Key': Endpoints.apiSecurityKey,
+                "authorization": "Bearer $refreshToken"
+              }));
       var data = resp.data!;
       await AuthUserHelpers.setAccessToken(data[BackendHelper.accesstoken]);
       return true;

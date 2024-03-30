@@ -1,4 +1,4 @@
-import './backend_helper.dart';
+import 'backend_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthUserHelpers{

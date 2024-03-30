@@ -1,3 +1,6 @@
 library onestop_kit;
 
-export 'onestop_api.dart';
+export 'src/api/onestop_api.dart';
+export 'src/constants/enums.dart';
+export 'src/constants/onestop_colors.dart';
+export 'src/constants/onestop_styles.dart';
