@@ -18,22 +18,4 @@ enum Branch {
   final String? databaseString;
 
   const Branch(this.displayString, this.databaseString);
-
-  static List<String> getDisplayStringList() {
-    return Branch.values.map((e) => e.displayString.toString()).toList();
-  }
-
-  static List<String> getDatabaseStringList() {
-    return Branch.values.map((e) => e.databaseString.toString()).toList();
-  }
-
-  static Branch? getEnumFromDisplayString(String displayStr) {
-    return Branch.values
-        .firstWhere((element) => element.displayString == displayStr);
-  }
-
-  static Branch? getEnumFromDatabaseString(String dbStr) {
-    return Branch.values
-        .firstWhere((element) => element.databaseString == dbStr);
-  }
 }
