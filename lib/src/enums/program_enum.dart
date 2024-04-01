@@ -15,20 +15,20 @@ enum Program {
 
   const Program(this.displayString, this.databaseString);
 
-  List<String> getDisplayStringList() {
+  static List<String> getDisplayStringList() {
     return Program.values.map((e) => e.displayString.toString()).toList();
   }
 
-  List<String> getDatabaseStringList() {
+  static List<String> getDatabaseStringList() {
     return Program.values.map((e) => e.databaseString.toString()).toList();
   }
 
-  Program? getEnumFromDisplayString(String displayStr) {
+  static Program? getEnumFromDisplayString(String displayStr) {
     return Program.values
         .firstWhere((element) => element.displayString == displayStr);
   }
 
-  Program? getEnumFromDatabaseString(String dbStr) {
+  static Program? getEnumFromDatabaseString(String dbStr) {
     return Program.values
         .firstWhere((element) => element.databaseString == dbStr);
   }

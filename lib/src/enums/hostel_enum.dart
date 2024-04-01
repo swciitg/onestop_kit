@@ -21,20 +21,20 @@ enum Hostel {
 
   const Hostel(this.displayString, this.databaseString);
 
-  List<String> getDisplayStringList() {
+  static List<String> getDisplayStringList() {
     return Hostel.values.map((e) => e.displayString.toString()).toList();
   }
 
-  List<String> getDatabaseStringList() {
+  static List<String> getDatabaseStringList() {
     return Hostel.values.map((e) => e.databaseString.toString()).toList();
   }
 
-  Hostel? getEnumFromDisplayString(String displayStr) {
+  static Hostel? getEnumFromDisplayString(String displayStr) {
     return Hostel.values
         .firstWhere((element) => element.displayString == displayStr);
   }
 
-  Hostel? getEnumFromDatabaseString(String dbStr) {
+  static Hostel? getEnumFromDatabaseString(String dbStr) {
     return Hostel.values
         .firstWhere((element) => element.databaseString == dbStr);
   }
