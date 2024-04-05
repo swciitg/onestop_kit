@@ -1,3 +1,5 @@
+part of 'package:onestop_kit/src/enums/enums.dart';
+
 enum Hostel {
   none("Select", null),
   lohit("Lohit", "LOHIT"),

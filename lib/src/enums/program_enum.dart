@@ -1,3 +1,5 @@
+part of 'package:onestop_kit/src/enums/enums.dart';
+
 enum Program {
   none("Select", null),
   bTech("B.Tech", "BTECH"),

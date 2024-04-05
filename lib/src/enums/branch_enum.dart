@@ -1,3 +1,5 @@
+part of 'package:onestop_kit/src/enums/enums.dart';
+
 enum Branch {
   none("Select", null),
   cse("Computer Science and Engineering", "CSE"),

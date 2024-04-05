@@ -1,4 +1,6 @@
-import 'package:onestop_kit/onestop_kit.dart';
+part 'package:onestop_kit/src/enums/branch_enum.dart';
+part 'package:onestop_kit/src/enums/program_enum.dart';
+part 'package:onestop_kit/src/enums/hostel_enum.dart';
 
 extension BranchExtension on List<Branch> {
   List<String> displayStrings() {
