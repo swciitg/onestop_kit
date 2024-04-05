@@ -1,39 +1,67 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# OneStopKit
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+OneStopKit is a Flutter package developed by SWC IITG to provide a set of common files, including
+colors, styles, enums, models, and more, for the "OneStop IITG" app. This package aims to enhance
+code reusability and maintainability across different parts of the application.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+OneStopKit includes the following features:
 
-## Getting started
+- **Colors**: A predefined set of colors consistent with the "OneStop IITG" app's design theme.
+- **Styles**: Common text styles, button styles, and other UI element styles to ensure a consistent
+  look and feel throughout the app.
+- **Enums**: Enumerations for various types used within the application, facilitating type safety
+  and clarity in code.
+- **Models**: Data models representing different entities used within the app, such as user
+  profiles, events, notifications, etc.
+- **Utility Functions**: Helper functions and utilities that can be reused across different parts of
+  the application, improving development efficiency.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Installation
+
+You can install OneStopKit by adding it as a dependency in your `pubspec.yaml` file:
+
+```yaml
+onestop_kit:
+  git:
+    url: https://github.com/swciitg/onestop_kit.git
+```
+
+Then, run `flutter pub get` in your terminal to fetch the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Once installed, you can import OneStopKit in your Dart code files and access its features:
 
 ```dart
-const like = 'sample';
+import 'package:onestop_kit/onestop_kit.dart';
 ```
 
-## Additional information
+Example usage of accessing colors:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+class Example extends StatelessWidget {
+  const Example({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: OneStopColors.primaryColor,
+        child: Text(
+          'Welcome to OneStop IITG!',
+          color: OneStopColors.kWhite,
+        )
+    );
+  }
+}
+
+```
+
+## License
+
+OneStopKit is licensed under the [MIT License](LICENSE).
+
+---
+
+© SWC IITG | OneStopKit
