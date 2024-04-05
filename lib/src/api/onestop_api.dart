@@ -1,32 +1,37 @@
 import 'package:dio/dio.dart';
 import 'package:onestop_kit/src/api/auth_user_helpers.dart';
 import 'package:onestop_kit/src/api/backend_helper.dart';
-import 'package:onestop_kit/src/api/endpoints.dart';
 
 class OneStopApi {
-  final _dio = Dio(BaseOptions(
-      baseUrl: Endpoints.baseUrl,
-      connectTimeout: const Duration(seconds: 15),
-      receiveTimeout: const Duration(seconds: 15),
-      headers: Endpoints.getHeader()));
+  final String onestopBaseUrl;
+  final String onestopSecurityKey;
+  late Dio _dio;
 
   Dio get onestopDio => _dio;
 
-  OneStopApi() {
+  OneStopApi({required this.onestopBaseUrl, required this.onestopSecurityKey}) {
+    _dio = Dio(BaseOptions(
+        baseUrl: onestopBaseUrl,
+        connectTimeout: const Duration(seconds: 15),
+        receiveTimeout: const Duration(seconds: 15),
+        headers: {
+          'Content-Type': 'application/json',
+          'security-key': onestopSecurityKey
+        }));
+
     _dio.interceptors
         .add(InterceptorsWrapper(onRequest: (options, handler) async {
       options.headers["Authorization"] =
           "Bearer ${await AuthUserHelpers.getAccessToken()}";
       handler.next(options);
     }, onError: (error, handler) async {
-      var response = error.response;
+      final response = error.response;
       if (response != null && response.statusCode == 401) {
         if ((await AuthUserHelpers.getAccessToken()).isEmpty) {
           throw Exception("Login to continue!!");
         } else {
           bool couldRegenerate = await regenerateAccessToken();
           if (couldRegenerate) {
-            // retry
             return handler.resolve(await retryRequest(response));
           } else {
             throw Exception("Your session has expired!! Login again.");
@@ -48,11 +53,11 @@ class OneStopApi {
         "Bearer ${await AuthUserHelpers.getAccessToken()}";
     final options =
         Options(method: requestOptions.method, headers: requestOptions.headers);
-    Dio retryDio = Dio(BaseOptions(
-        baseUrl: Endpoints.baseUrl,
+    final retryDio = Dio(BaseOptions(
+        baseUrl: onestopBaseUrl,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
-        headers: {'Security-Key': Endpoints.apiSecurityKey}));
+        headers: {'Security-Key': onestopSecurityKey}));
     if (requestOptions.method == "GET") {
       return retryDio.request(requestOptions.path,
           queryParameters: requestOptions.queryParameters, options: options);
@@ -67,17 +72,17 @@ class OneStopApi {
   Future<bool> regenerateAccessToken() async {
     String refreshToken = await AuthUserHelpers.getRefreshToken();
     try {
-      Dio regenDio = Dio(BaseOptions(
-          baseUrl: Endpoints.baseUrl,
+      final regenDio = Dio(BaseOptions(
+          baseUrl: onestopBaseUrl,
           connectTimeout: const Duration(seconds: 5),
           receiveTimeout: const Duration(seconds: 5)));
-      Response<Map<String, dynamic>> resp =
-          await regenDio.post("/user/accesstoken",
-              options: Options(headers: {
-                'Security-Key': Endpoints.apiSecurityKey,
-                "authorization": "Bearer $refreshToken"
-              }));
-      var data = resp.data!;
+      Response<Map<String, dynamic>> resp = await regenDio.post(
+          "/user/accesstoken",
+          options: Options(headers: {
+            'Security-Key': onestopSecurityKey,
+            "authorization": "Bearer $refreshToken"
+          }));
+      final data = resp.data!;
       await AuthUserHelpers.setAccessToken(data[BackendHelper.accesstoken]);
       return true;
     } catch (err) {
