@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_kit/onestop_kit.dart';
 
-class ErrorReloadScreen extends StatefulWidget {
-  final Function apiFunction;
+class ErrorReloadScreen extends StatelessWidget {
+  final Function reloadCallback;
 
-  const ErrorReloadScreen({required this.apiFunction, super.key});
+  const ErrorReloadScreen({required this.reloadCallback, super.key});
 
-  @override
-  State<ErrorReloadScreen> createState() => _ErrorReloadPageState();
-}
-
-class _ErrorReloadPageState extends State<ErrorReloadScreen> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -27,7 +22,8 @@ class _ErrorReloadPageState extends State<ErrorReloadScreen> {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
             child: Text(
-              "Looks like you’ve run into an error. Please reload to resolve the issue.",
+              "Looks like you’ve run into an error. "
+              "Please reload to resolve the issue.",
               style: OneStopStyles.bottomNavStyle1,
               textAlign: TextAlign.center,
             ),
@@ -37,7 +33,7 @@ class _ErrorReloadPageState extends State<ErrorReloadScreen> {
           ),
           ElevatedButton.icon(
             onPressed: () {
-              widget.apiFunction();
+              reloadCallback();
             },
             icon: const Icon(
               Icons.rotate_right,
