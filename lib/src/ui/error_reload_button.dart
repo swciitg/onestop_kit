@@ -8,30 +8,33 @@ class ErrorReloadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton.icon(
-          onPressed: () {
-            reloadCallback();
-          },
-          icon: const Icon(
-            Icons.rotate_right,
-            size: 16,
-            color: OneStopColors.kBlack,
-          ),
-          label: const Text(
-            "Try again",
-            style: TextStyle(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+      child: Column(
+        children: [
+          ElevatedButton.icon(
+            onPressed: () {
+              reloadCallback();
+            },
+            icon: const Icon(
+              Icons.rotate_right,
+              size: 16,
               color: OneStopColors.kBlack,
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
+            ),
+            label: const Text(
+              "Try again",
+              style: TextStyle(
+                color: OneStopColors.kBlack,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll(OneStopColors.kYellow),
             ),
           ),
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(OneStopColors.kYellow),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
