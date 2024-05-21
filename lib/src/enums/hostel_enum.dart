@@ -13,7 +13,7 @@ enum Hostel {
   siang("Siang", "SIANG"),
   kapili("Kapili", "KAPILI"),
   dhansiri("Dhansiri", "DHANSIRI"),
-  subhansiri("Subhansiri", "SUBHANSIRI"),
+  subansiri("Subansiri", "SUBANSIRI"),
   msh("Married Scholars' Hostel", "MSH"),
   gaurang("Gaurang", "GAURANG"),
   dibang("Dibang", "DIBANG");
