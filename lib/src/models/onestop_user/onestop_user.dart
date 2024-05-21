@@ -16,7 +16,7 @@ class OneStopUser with _$OneStopUser {
       final String? roomNo,
       final String? homeAddress,
       final String? dob,
-      final String? hostel,
+      final String? hostel, // Database String
       final String? linkedin,
       final String? image}) = _OneStopUser;
 
