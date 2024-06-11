@@ -5,12 +5,19 @@ import 'package:onestop_kit/src/api/backend_helper.dart';
 class OneStopApi {
   final String onestopBaseUrl;
   final String onestopSecurityKey;
-  late Dio _dio;
+  final String serverBaseUrl;
+  late Dio _onestopDio;
+  late Dio _serverDio;
 
-  Dio get onestopDio => _dio;
+  Dio get onestopDio => _onestopDio;
 
-  OneStopApi({required this.onestopBaseUrl, required this.onestopSecurityKey}) {
-    _dio = Dio(BaseOptions(
+  Dio get serverDio => _serverDio;
+
+  OneStopApi(
+      {required this.serverBaseUrl,
+      required this.onestopBaseUrl,
+      required this.onestopSecurityKey}) {
+    _onestopDio = Dio(BaseOptions(
         baseUrl: onestopBaseUrl,
         connectTimeout: const Duration(seconds: 15),
         receiveTimeout: const Duration(seconds: 15),
@@ -19,8 +26,17 @@ class OneStopApi {
           'security-key': onestopSecurityKey
         }));
 
-    _dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (options, handler) async {
+    _serverDio = Dio(BaseOptions(
+        baseUrl: serverBaseUrl,
+        connectTimeout: const Duration(seconds: 15),
+        receiveTimeout: const Duration(seconds: 15),
+        headers: {
+          'Content-Type': 'application/json',
+          'security-key': onestopSecurityKey
+        }));
+
+    final serverInterceptors =
+        InterceptorsWrapper(onRequest: (options, handler) async {
       options.headers["Authorization"] =
           "Bearer ${await AuthUserHelpers.getAccessToken()}";
       handler.next(options);
@@ -44,7 +60,10 @@ class OneStopApi {
       }
       // admin user with expired tokens
       return handler.next(error);
-    }));
+    });
+
+    _onestopDio.interceptors.add(serverInterceptors);
+    _serverDio.interceptors.add(serverInterceptors);
   }
 
   Future<Response<dynamic>> retryRequest(Response response) async {
