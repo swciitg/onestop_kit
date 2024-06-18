@@ -7,9 +7,11 @@ class OneStopColors {
   static const kBlack = Colors.black;
   static const backgroundColor = Color.fromRGBO(27, 27, 29, 1);
   static const primaryColor = Color.fromRGBO(118, 172, 255, 1);
+  static const secondaryColor = Color.fromRGBO(39, 49, 65, 1);
+  static const onSecondaryColor = Colors.white;
+  static const onSecondaryColor2 = Color.fromRGBO(182, 182, 182, 1);
   static const cardColor = Color.fromRGBO(71, 71, 71, 1);
   static const focusColor = Color.fromRGBO(94, 94, 94, 1);
-  static const secondaryColor = Color.fromRGBO(39, 49, 65, 1);
   static const bottomNavBarColor = Color.fromRGBO(45, 48, 55, 1);
   static const bottomNavFontColor = Color.fromRGBO(171, 171, 175, 1);
   static const bottomNavHighlightColor = Color.fromRGBO(94, 94, 94, 0.38);
@@ -19,6 +21,7 @@ class OneStopColors {
   static const cardFontColor2 = Color.fromRGBO(242, 242, 242, 1);
   static const warning = Color.fromRGBO(255, 201, 7, 1);
   static const errorRed = Color.fromRGBO(255, 84, 73, 1);
+  static const greenTextColor = Color.fromRGBO(105, 182, 140, 1);
   static const dividerColor1 = Color.fromRGBO(94, 94, 94, 0.38);
   static const checkBoxColor = Color.fromRGBO(171, 171, 175, 1);
   static const splashColor = Color.fromRGBO(118, 172, 255, 0.9);
