@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onestop_kit/onestop_kit.dart';
 
-class BackButton extends StatelessWidget {
+class OneStopBackButton extends StatelessWidget {
   final void Function() onTap;
 
-  const BackButton({required this.onTap, super.key});
+  const OneStopBackButton({required this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
