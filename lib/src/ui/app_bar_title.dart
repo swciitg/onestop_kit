@@ -9,6 +9,7 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(title, style: OneStopStyles.headingStyle1),
         const Text('.', style: OneStopStyles.headingStyle2),

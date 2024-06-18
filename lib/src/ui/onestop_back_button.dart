@@ -8,28 +8,30 @@ class OneStopBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: 80,
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: OneStopColors.cardColor1),
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.arrow_back_outlined,
-              size: 16,
-              color: OneStopColors.primaryColor,
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Text('One', style: OneStopStyles.cardStageStyle2),
-            Text('.', style: OneStopStyles.cardStageStyle1),
-          ],
+    return Center(
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: 80,
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: OneStopColors.cardColor1),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.arrow_back_outlined,
+                size: 16,
+                color: OneStopColors.primaryColor,
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              Text('One', style: OneStopStyles.cardStageStyle2),
+              Text('.', style: OneStopStyles.cardStageStyle1),
+            ],
+          ),
         ),
       ),
     );
