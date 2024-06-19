@@ -11,6 +11,7 @@ class ErrorReloadButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ElevatedButton.icon(
             onPressed: () {
@@ -30,7 +31,7 @@ class ErrorReloadButton extends StatelessWidget {
               ),
             ),
             style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(OneStopColors.kYellow),
+              backgroundColor: WidgetStatePropertyAll(OneStopColors.kYellow),
             ),
           ),
         ],
