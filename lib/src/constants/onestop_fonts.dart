@@ -34,4 +34,5 @@ extension TextStyleHelpers on TextStyle {
   TextStyle letterSpace(double space) => copyWith(letterSpacing: space);
 
   TextStyle setHeight(double space) => copyWith(height: space);
+  TextStyle underline() => copyWith(decoration: TextDecoration.underline);
 }
