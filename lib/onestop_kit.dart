@@ -13,3 +13,4 @@ export 'src/ui/error_reload_button.dart';
 export 'src/ui/error_reload_screen.dart';
 export 'src/ui/onestop_back_button.dart';
 export 'src/ui/guest_restrict_access.dart';
+export 'src/globals/size_config.dart';
