@@ -30,12 +30,18 @@ mixin _$OneStopUser {
   String? get roomNo => throw _privateConstructorUsedError;
   String? get homeAddress => throw _privateConstructorUsedError;
   String? get dob => throw _privateConstructorUsedError;
-  String? get hostel => throw _privateConstructorUsedError;
+  String? get hostel => throw _privateConstructorUsedError; // Database String
+  String? get subscribedMess => throw _privateConstructorUsedError;
   String? get linkedin => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
+  String? get cycleReg => throw _privateConstructorUsedError;
 
+  /// Serializes this OneStopUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of OneStopUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OneStopUserCopyWith<OneStopUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,8 +64,10 @@ abstract class $OneStopUserCopyWith<$Res> {
       String? homeAddress,
       String? dob,
       String? hostel,
+      String? subscribedMess,
       String? linkedin,
-      String? image});
+      String? image,
+      String? cycleReg});
 }
 
 /// @nodoc
@@ -72,6 +80,8 @@ class _$OneStopUserCopyWithImpl<$Res, $Val extends OneStopUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of OneStopUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,8 +96,10 @@ class _$OneStopUserCopyWithImpl<$Res, $Val extends OneStopUser>
     Object? homeAddress = freezed,
     Object? dob = freezed,
     Object? hostel = freezed,
+    Object? subscribedMess = freezed,
     Object? linkedin = freezed,
     Object? image = freezed,
+    Object? cycleReg = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -134,6 +146,10 @@ class _$OneStopUserCopyWithImpl<$Res, $Val extends OneStopUser>
           ? _value.hostel
           : hostel // ignore: cast_nullable_to_non_nullable
               as String?,
+      subscribedMess: freezed == subscribedMess
+          ? _value.subscribedMess
+          : subscribedMess // ignore: cast_nullable_to_non_nullable
+              as String?,
       linkedin: freezed == linkedin
           ? _value.linkedin
           : linkedin // ignore: cast_nullable_to_non_nullable
@@ -141,6 +157,10 @@ class _$OneStopUserCopyWithImpl<$Res, $Val extends OneStopUser>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cycleReg: freezed == cycleReg
+          ? _value.cycleReg
+          : cycleReg // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -166,8 +186,10 @@ abstract class _$$OneStopUserImplCopyWith<$Res>
       String? homeAddress,
       String? dob,
       String? hostel,
+      String? subscribedMess,
       String? linkedin,
-      String? image});
+      String? image,
+      String? cycleReg});
 }
 
 /// @nodoc
@@ -178,6 +200,8 @@ class __$$OneStopUserImplCopyWithImpl<$Res>
       _$OneStopUserImpl _value, $Res Function(_$OneStopUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of OneStopUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,8 +216,10 @@ class __$$OneStopUserImplCopyWithImpl<$Res>
     Object? homeAddress = freezed,
     Object? dob = freezed,
     Object? hostel = freezed,
+    Object? subscribedMess = freezed,
     Object? linkedin = freezed,
     Object? image = freezed,
+    Object? cycleReg = freezed,
   }) {
     return _then(_$OneStopUserImpl(
       name: null == name
@@ -240,6 +266,10 @@ class __$$OneStopUserImplCopyWithImpl<$Res>
           ? _value.hostel
           : hostel // ignore: cast_nullable_to_non_nullable
               as String?,
+      subscribedMess: freezed == subscribedMess
+          ? _value.subscribedMess
+          : subscribedMess // ignore: cast_nullable_to_non_nullable
+              as String?,
       linkedin: freezed == linkedin
           ? _value.linkedin
           : linkedin // ignore: cast_nullable_to_non_nullable
@@ -247,6 +277,10 @@ class __$$OneStopUserImplCopyWithImpl<$Res>
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cycleReg: freezed == cycleReg
+          ? _value.cycleReg
+          : cycleReg // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -267,8 +301,10 @@ class _$OneStopUserImpl implements _OneStopUser {
       this.homeAddress,
       this.dob,
       this.hostel,
+      this.subscribedMess,
       this.linkedin,
-      this.image});
+      this.image,
+      this.cycleReg});
 
   factory _$OneStopUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$OneStopUserImplFromJson(json);
@@ -295,14 +331,19 @@ class _$OneStopUserImpl implements _OneStopUser {
   final String? dob;
   @override
   final String? hostel;
+// Database String
+  @override
+  final String? subscribedMess;
   @override
   final String? linkedin;
   @override
   final String? image;
+  @override
+  final String? cycleReg;
 
   @override
   String toString() {
-    return 'OneStopUser(name: $name, rollNo: $rollNo, outlookEmail: $outlookEmail, altEmail: $altEmail, phoneNumber: $phoneNumber, emergencyPhoneNumber: $emergencyPhoneNumber, gender: $gender, roomNo: $roomNo, homeAddress: $homeAddress, dob: $dob, hostel: $hostel, linkedin: $linkedin, image: $image)';
+    return 'OneStopUser(name: $name, rollNo: $rollNo, outlookEmail: $outlookEmail, altEmail: $altEmail, phoneNumber: $phoneNumber, emergencyPhoneNumber: $emergencyPhoneNumber, gender: $gender, roomNo: $roomNo, homeAddress: $homeAddress, dob: $dob, hostel: $hostel, subscribedMess: $subscribedMess, linkedin: $linkedin, image: $image, cycleReg: $cycleReg)';
   }
 
   @override
@@ -326,12 +367,16 @@ class _$OneStopUserImpl implements _OneStopUser {
                 other.homeAddress == homeAddress) &&
             (identical(other.dob, dob) || other.dob == dob) &&
             (identical(other.hostel, hostel) || other.hostel == hostel) &&
+            (identical(other.subscribedMess, subscribedMess) ||
+                other.subscribedMess == subscribedMess) &&
             (identical(other.linkedin, linkedin) ||
                 other.linkedin == linkedin) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.cycleReg, cycleReg) ||
+                other.cycleReg == cycleReg));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -346,10 +391,14 @@ class _$OneStopUserImpl implements _OneStopUser {
       homeAddress,
       dob,
       hostel,
+      subscribedMess,
       linkedin,
-      image);
+      image,
+      cycleReg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of OneStopUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OneStopUserImplCopyWith<_$OneStopUserImpl> get copyWith =>
@@ -376,8 +425,10 @@ abstract class _OneStopUser implements OneStopUser {
       final String? homeAddress,
       final String? dob,
       final String? hostel,
+      final String? subscribedMess,
       final String? linkedin,
-      final String? image}) = _$OneStopUserImpl;
+      final String? image,
+      final String? cycleReg}) = _$OneStopUserImpl;
 
   factory _OneStopUser.fromJson(Map<String, dynamic> json) =
       _$OneStopUserImpl.fromJson;
@@ -403,13 +454,20 @@ abstract class _OneStopUser implements OneStopUser {
   @override
   String? get dob;
   @override
-  String? get hostel;
+  String? get hostel; // Database String
+  @override
+  String? get subscribedMess;
   @override
   String? get linkedin;
   @override
   String? get image;
   @override
-  @JsonKey(ignore: true)
+  String? get cycleReg;
+
+  /// Create a copy of OneStopUser
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OneStopUserImplCopyWith<_$OneStopUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
