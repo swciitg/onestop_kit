@@ -16,7 +16,8 @@ enum Hostel {
   subansiri("Subansiri", "SUBANSIRI"),
   msh("Married Scholars' Hostel", "MSH"),
   gaurang("Gaurang", "GAURANG"),
-  dibang("Dibang", "DIBANG");
+  dibang("Dibang", "DIBANG"),
+  nonHosteller("Non-Hosteller", "NON-HOSTELLER");
 
   final String displayString;
   final String? databaseString;

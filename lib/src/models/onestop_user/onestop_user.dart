@@ -17,8 +17,10 @@ class OneStopUser with _$OneStopUser {
       final String? homeAddress,
       final String? dob,
       final String? hostel, // Database String
+      final String? subscribedMess,
       final String? linkedin,
-      final String? image}) = _OneStopUser;
+      final String? image,
+      final String? cycleReg}) = _OneStopUser;
 
   factory OneStopUser.fromJson(Map<String, Object?> json) =>
       _$OneStopUserFromJson(json);

@@ -12,15 +12,17 @@ _$OneStopUserImpl _$$OneStopUserImplFromJson(Map<String, dynamic> json) =>
       rollNo: json['rollNo'] as String,
       outlookEmail: json['outlookEmail'] as String,
       altEmail: json['altEmail'] as String?,
-      phoneNumber: json['phoneNumber'] as int?,
-      emergencyPhoneNumber: json['emergencyPhoneNumber'] as int?,
+      phoneNumber: (json['phoneNumber'] as num?)?.toInt(),
+      emergencyPhoneNumber: (json['emergencyPhoneNumber'] as num?)?.toInt(),
       gender: json['gender'] as String?,
       roomNo: json['roomNo'] as String?,
       homeAddress: json['homeAddress'] as String?,
       dob: json['dob'] as String?,
       hostel: json['hostel'] as String?,
+      subscribedMess: json['subscribedMess'] as String?,
       linkedin: json['linkedin'] as String?,
       image: json['image'] as String?,
+      cycleReg: json['cycleReg'] as String?,
     );
 
 Map<String, dynamic> _$$OneStopUserImplToJson(_$OneStopUserImpl instance) =>
@@ -36,6 +38,8 @@ Map<String, dynamic> _$$OneStopUserImplToJson(_$OneStopUserImpl instance) =>
       'homeAddress': instance.homeAddress,
       'dob': instance.dob,
       'hostel': instance.hostel,
+      'subscribedMess': instance.subscribedMess,
       'linkedin': instance.linkedin,
       'image': instance.image,
+      'cycleReg': instance.cycleReg,
     };
