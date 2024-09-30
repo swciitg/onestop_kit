@@ -1,7 +1,7 @@
 part of 'package:onestop_kit/src/enums/enums.dart';
 
 enum Mess {
-  none("None", null),
+  none("None", "NONE"),
   lohit("Lohit", "LOHIT"),
   brahma("Brahmaputra", "BRAHMAPUTRA"),
   disang("Disang", "DISANG"),
