@@ -6,6 +6,8 @@ class OneStopApi {
   final String onestopBaseUrl;
   final String onestopSecurityKey;
   final String serverBaseUrl;
+  final Future<void> Function() onRefreshTokenExpired;
+
   late Dio _onestopDio;
   late Dio _serverDio;
 
@@ -13,10 +15,12 @@ class OneStopApi {
 
   Dio get serverDio => _serverDio;
 
-  OneStopApi(
-      {required this.serverBaseUrl,
-      required this.onestopBaseUrl,
-      required this.onestopSecurityKey}) {
+  OneStopApi({
+    required this.serverBaseUrl,
+    required this.onestopBaseUrl,
+    required this.onestopSecurityKey,
+    required this.onRefreshTokenExpired,
+  }) {
     _onestopDio = Dio(BaseOptions(
         baseUrl: onestopBaseUrl,
         connectTimeout: const Duration(seconds: 15),
@@ -50,7 +54,9 @@ class OneStopApi {
           if (couldRegenerate) {
             return handler.resolve(await retryRequest(response));
           } else {
-            throw Exception("Your session has expired!! Login again.");
+            await onRefreshTokenExpired();
+            return;
+            // throw Exception("Your session has expired!! Login again.");
           }
         }
       } else if (response != null && response.statusCode == 403) {
