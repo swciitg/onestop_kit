@@ -79,7 +79,7 @@ class OneStopApi {
     final options =
         Options(method: requestOptions.method, headers: requestOptions.headers);
     final retryDio = Dio(BaseOptions(
-        baseUrl: onestopBaseUrl,
+        baseUrl: requestOptions.baseUrl,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         headers: {'Security-Key': onestopSecurityKey}));
